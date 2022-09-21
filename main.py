@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
 import rand_str
 
@@ -55,12 +57,28 @@ for item in items:
         item.find_element(By.TAG_NAME, "input").click()
         break
 
-inputs = driver.find_elements(By.TAG_NAME, "input")
+element_present = EC.presence_of_element_located((By.ID, "add-to-cart-button-74"))
+WebDriverWait(driver, 10).until(element_present)
 
-for input in inputs:
-    if input.get_property("type") == "button":
-        print(input.text)
+driver.find_element(By.ID, "add-to-cart-button-74").click()
 
-time.sleep(10000)
+time.sleep(1)
+
+driver.find_element(By.CLASS_NAME, "close").click()
+
+driver.find_element(By.CLASS_NAME, "cart-label").click()
+
+driver.find_element(By.NAME, "removefromcart").click()
+
+driver.find_element(
+    By.XPATH,
+    "/html/body/div[4]/div[1]/div[4]/div/div/div[2]/div/form/div[1]/div/input[1]",
+).click()
+
+items_in_cart = driver.find_elements(By.CLASS_NAME, "cart-item-row")
+
+assert len(items_in_cart) == 0
+
+time.sleep(5)
 
 driver.close()
