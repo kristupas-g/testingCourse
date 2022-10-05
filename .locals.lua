@@ -1,1 +1,1 @@
-Run_cmd = "python3 main.py"
+Run_cmd = "python3 2uzd.py"

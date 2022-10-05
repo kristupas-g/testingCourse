@@ -33,7 +33,6 @@ for form_field in form_fields:
         else:
             field.send_keys(rand_str.get_random_string(12))
 
-
 driver.find_element(By.XPATH, '//*[@id="register-button"]').click()
 
 driver.find_element(
