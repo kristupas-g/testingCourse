@@ -28,3 +28,9 @@ def click_in_list_by_text(
 
 def browser_click(driver, element: WebElement):
     driver.execute_script("arguments[0].click();", element)
+
+
+def read_file(name):
+    file = open(name, "r")
+    content = file.read()
+    return content.split("\n")[:-1]

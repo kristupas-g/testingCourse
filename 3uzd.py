@@ -12,8 +12,7 @@ driver = webdriver.Chrome()
 
 wait = WebDriverWait(driver, 40)
 
-driver.get("https://demoqa.com/")
-
+driver.get("https://demowebshop.tricentis.com/")
 
 driver.find_element(By.XPATH, '//*[@id="app"]/div/div/div[2]/div/div[1]').click()
 
